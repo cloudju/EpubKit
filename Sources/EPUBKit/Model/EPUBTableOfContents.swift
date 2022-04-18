@@ -9,8 +9,8 @@
 import Foundation
 
 public struct EPUBTableOfContents {
-    public var label: String
-    public var id: String
-    public var item: String?
-    public var subTable: [EPUBTableOfContents]?
+  public var label: String
+  public var id: String
+  public var item: String?
+  public var subTable: [EPUBTableOfContents]?
 }

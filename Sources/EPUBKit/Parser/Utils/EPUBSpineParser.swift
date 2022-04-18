@@ -6,35 +6,36 @@
 //  Copyright © 2018 Witek Bobrowski. All rights reserved.
 //
 
-import Foundation
 import AEXML
+import Foundation
 
 protocol EPUBSpineParser {
-    func parse(_ xmlElement: AEXMLElement) -> EPUBSpine
+  func parse(_ xmlElement: AEXMLElement) -> EPUBSpine
 }
 
 class EPUBSpineParserImplementation: EPUBSpineParser {
 
-    func parse(_ xmlElement: AEXMLElement) -> EPUBSpine {
-        let items: [EPUBSpineItem] = xmlElement["itemref"].all?
-            .compactMap { item in
-                if let idref = item.attributes["idref"] {
-                    let id = item.attributes["id"]
-                    let linear = (item.attributes["linear"] ?? "yes") == "yes"
-                    return EPUBSpineItem(id: id, idref: idref, linear: linear)
-                } else {
-                    return nil
-                }
-            } ?? []
-        let direction = xmlElement["page-progression-direction"].value ?? "ltr"
-        return EPUBSpine(
-            id: xmlElement.attributes["id"],
-            toc: xmlElement.attributes["toc"],
-            pageProgressionDirection: EPUBPageProgressionDirection(
-                rawValue: direction
-            ),
-            items: items
-        )
-    }
+  func parse(_ xmlElement: AEXMLElement) -> EPUBSpine {
+    let items: [EPUBSpineItem] =
+      xmlElement["itemref"].all?
+      .compactMap { item in
+        if let idref = item.attributes["idref"] {
+          let id = item.attributes["id"]
+          let linear = (item.attributes["linear"] ?? "yes") == "yes"
+          return EPUBSpineItem(id: id, idref: idref, linear: linear)
+        } else {
+          return nil
+        }
+      } ?? []
+    let direction = xmlElement["page-progression-direction"].value ?? "ltr"
+    return EPUBSpine(
+      id: xmlElement.attributes["id"],
+      toc: xmlElement.attributes["toc"],
+      pageProgressionDirection: EPUBPageProgressionDirection(
+        rawValue: direction
+      ),
+      items: items
+    )
+  }
 
 }

@@ -9,7 +9,7 @@
 import Foundation
 
 public struct EPUBCreator {
-    public var name: String?
-    public var role: String?
-    public var fileAs: String?
+  public var name: String?
+  public var role: String?
+  public var fileAs: String?
 }

@@ -9,8 +9,8 @@
 import Foundation
 
 public struct EPUBManifestItem {
-    public var id: String
-    public var path: String
-    public var mediaType: EPUBMediaType
-    public var property: String?
+  public var id: String
+  public var path: String
+  public var mediaType: EPUBMediaType
+  public var property: String?
 }

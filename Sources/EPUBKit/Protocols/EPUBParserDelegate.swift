@@ -9,25 +9,25 @@
 import Foundation
 
 public protocol EPUBParserDelegate: AnyObject {
-    func parser(_ parser: EPUBParser, didBeginParsingDocumentAt path: URL)
-    func parser(_ parser: EPUBParser, didUnzipArchiveTo directory: URL)
-    func parser(_ parser: EPUBParser, didLocateContentAt directory: URL)
-    func parser(_ parser: EPUBParser, didFinishParsing metadata: EPUBMetadata)
-    func parser(_ parser: EPUBParser, didFinishParsing manifest: EPUBManifest)
-    func parser(_ parser: EPUBParser, didFinishParsing spine: EPUBSpine)
-    func parser(_ parser: EPUBParser, didFinishParsing tableOfContents: EPUBTableOfContents)
-    func parser(_ parser: EPUBParser, didFinishParsingDocumentAt path: URL)
-    func parser(_ parser: EPUBParser, didFailParsingDocumentAt path: URL, with error: Error)
+  func parser(_ parser: EPUBParser, didBeginParsingDocumentAt path: URL)
+  func parser(_ parser: EPUBParser, didUnzipArchiveTo directory: URL)
+  func parser(_ parser: EPUBParser, didLocateContentAt directory: URL)
+  func parser(_ parser: EPUBParser, didFinishParsing metadata: EPUBMetadata)
+  func parser(_ parser: EPUBParser, didFinishParsing manifest: EPUBManifest)
+  func parser(_ parser: EPUBParser, didFinishParsing spine: EPUBSpine)
+  func parser(_ parser: EPUBParser, didFinishParsing tableOfContents: EPUBTableOfContents)
+  func parser(_ parser: EPUBParser, didFinishParsingDocumentAt path: URL)
+  func parser(_ parser: EPUBParser, didFailParsingDocumentAt path: URL, with error: Error)
 }
 
-public extension EPUBParserDelegate {
-    func parser(_ parser: EPUBParser, didBeginParsingDocumentAt path: URL) {}
-    func parser(_ parser: EPUBParser, didUnzipArchiveTo directory: URL) {}
-    func parser(_ parser: EPUBParser, didLocateContentAt directory: URL) {}
-    func parser(_ parser: EPUBParser, didFinishParsing metadata: EPUBMetadata) {}
-    func parser(_ parser: EPUBParser, didFinishParsing manifest: EPUBManifest) {}
-    func parser(_ parser: EPUBParser, didFinishParsing spine: EPUBSpine) {}
-    func parser(_ parser: EPUBParser, didFinishParsing tableOfContents: EPUBTableOfContents) {}
-    func parser(_ parser: EPUBParser, didFinishParsingDocumentAt path: URL) {}
-    func parser(_ parser: EPUBParser, didFailParsingDocumentAt path: URL, with error: Error) {}
+extension EPUBParserDelegate {
+  public func parser(_ parser: EPUBParser, didBeginParsingDocumentAt path: URL) {}
+  public func parser(_ parser: EPUBParser, didUnzipArchiveTo directory: URL) {}
+  public func parser(_ parser: EPUBParser, didLocateContentAt directory: URL) {}
+  public func parser(_ parser: EPUBParser, didFinishParsing metadata: EPUBMetadata) {}
+  public func parser(_ parser: EPUBParser, didFinishParsing manifest: EPUBManifest) {}
+  public func parser(_ parser: EPUBParser, didFinishParsing spine: EPUBSpine) {}
+  public func parser(_ parser: EPUBParser, didFinishParsing tableOfContents: EPUBTableOfContents) {}
+  public func parser(_ parser: EPUBParser, didFinishParsingDocumentAt path: URL) {}
+  public func parser(_ parser: EPUBParser, didFailParsingDocumentAt path: URL, with error: Error) {}
 }

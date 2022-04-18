@@ -9,7 +9,7 @@
 import Foundation
 
 public struct EPUBSpineItem {
-    public var id: String?
-    public var idref: String
-    public var linear: Bool
+  public var id: String?
+  public var idref: String
+  public var linear: Bool
 }

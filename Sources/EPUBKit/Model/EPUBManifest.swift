@@ -9,6 +9,6 @@
 import Foundation
 
 public struct EPUBManifest {
-    public var id: String?
-    public var items: [String: EPUBManifestItem]
+  public var id: String?
+  public var items: [String: EPUBManifestItem]
 }

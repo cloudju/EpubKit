@@ -10,46 +10,44 @@ import Foundation
 
 public struct EPUBDocument {
 
-    public let directory: URL
-    public let contentDirectory: URL
-    public let metadata: EPUBMetadata
-    public let manifest: EPUBManifest
-    public let spine: EPUBSpine
-    public let tableOfContents: EPUBTableOfContents
+  public let directory: URL
+  public let contentDirectory: URL
+  public let metadata: EPUBMetadata
+  public let manifest: EPUBManifest
+  public let spine: EPUBSpine
+  public let tableOfContents: EPUBTableOfContents
 
-    init(
-        directory: URL,
-        contentDirectory: URL,
-        metadata: EPUBMetadata,
-        manifest: EPUBManifest,
-        spine: EPUBSpine,
-        tableOfContents: EPUBTableOfContents
-    ) {
-        self.directory = directory
-        self.contentDirectory = contentDirectory
-        self.metadata = metadata
-        self.manifest = manifest
-        self.spine = spine
-        self.tableOfContents = tableOfContents
-    }
+  init(
+    directory: URL,
+    contentDirectory: URL,
+    metadata: EPUBMetadata,
+    manifest: EPUBManifest,
+    spine: EPUBSpine,
+    tableOfContents: EPUBTableOfContents
+  ) {
+    self.directory = directory
+    self.contentDirectory = contentDirectory
+    self.metadata = metadata
+    self.manifest = manifest
+    self.spine = spine
+    self.tableOfContents = tableOfContents
+  }
 
-    public init?(url: URL) {
-        guard let document = try? EPUBParser().parse(documentAt: url) else {
-            return nil
-        }
-        self = document
-    }
+  public init(url: URL) throws {
+    let document = try EPUBParser().parse(documentAt: url)
+    self = document
+  }
 
 }
 
 extension EPUBDocument {
-    public var title: String? { metadata.title }
-    public var author: String? { metadata.creator?.name }
-    public var publisher: String? { metadata.publisher }
-    public var cover: URL? {
-        guard let coverId = metadata.coverId, let path = manifest.items[coverId]?.path else {
-            return nil
-        }
-        return contentDirectory.appendingPathComponent(path)
+  public var title: String? { metadata.title }
+  public var author: String? { metadata.creator?.name }
+  public var publisher: String? { metadata.publisher }
+  public var cover: URL? {
+    guard let coverId = metadata.coverId, let path = manifest.items[coverId]?.path else {
+      return nil
     }
+    return contentDirectory.appendingPathComponent(path)
+  }
 }

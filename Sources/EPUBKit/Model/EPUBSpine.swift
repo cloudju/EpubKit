@@ -9,13 +9,13 @@
 import Foundation
 
 public struct EPUBSpine {
-    public var id: String?
-    public var toc: String?
-    public var pageProgressionDirection: EPUBPageProgressionDirection?
-    public var items: [EPUBSpineItem]
+  public var id: String?
+  public var toc: String?
+  public var pageProgressionDirection: EPUBPageProgressionDirection?
+  public var items: [EPUBSpineItem]
 }
 
 public enum EPUBPageProgressionDirection: String {
-    case leftToRight = "ltr"
-    case rightToLeft = "rtl"
+  case leftToRight = "ltr"
+  case rightToLeft = "rtl"
 }
