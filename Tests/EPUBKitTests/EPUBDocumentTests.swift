@@ -14,7 +14,7 @@ final class EPUBDocumentTests: XCTestCase {
 
     func testEPUBDocumentSimpleInitialiserWithAliceInWonderland() {
         let url = library.path(for: .alicesAdventuresinWonderland)
-        guard let document = EPUBDocument(url: url) else {
+        guard let document = try? EPUBDocument(url: url) else {
             XCTFail("Document should be parsed correctly.")
             return
         }
@@ -26,7 +26,7 @@ final class EPUBDocumentTests: XCTestCase {
 
     func testEPUBDocumentSimpleInitialiserWithGeographyOfBliss() {
         let url = library.path(for: .theGeographyofBliss)
-        guard let document = EPUBDocument(url: url) else {
+        guard let document = try? EPUBDocument(url: url) else {
             XCTFail("Document should be parsed correctly.")
             return
         }
@@ -38,7 +38,7 @@ final class EPUBDocumentTests: XCTestCase {
 
     func testEPUBDocumentSimpleInitialiserWithMethamorphosis() {
         let url = library.path(for: .theMetamorphosis)
-        guard let document = EPUBDocument(url: url) else {
+        guard let document = try? EPUBDocument(url: url) else {
             XCTFail("Document should be parsed correctly.")
             return
         }
@@ -50,7 +50,7 @@ final class EPUBDocumentTests: XCTestCase {
 
     func testEPUBDocumentSimpleInitialiserWithPhilosophy() {
         let url = library.path(for: .theProblemsofPhilosophy)
-        guard let document = EPUBDocument(url: url) else {
+        guard let document = try? EPUBDocument(url: url) else {
             XCTFail("Document should be parsed correctly.")
             return
         }

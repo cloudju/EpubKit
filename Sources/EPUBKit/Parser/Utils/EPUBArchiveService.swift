@@ -22,7 +22,24 @@ class EPUBArchiveServiceImplementation: EPUBArchiveService {
   func unarchive(archive url: URL) throws -> URL {
     var destination: URL
     do {
-      destination = try Zip.quickUnzipFile(url)
+      let appName = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String ?? "tmp"
+      var epubFileName = url
+      epubFileName.deletePathExtension()
+      let tt = try FileManager.default.url(
+          for: .documentDirectory,
+           in: .userDomainMask,
+           appropriateFor: nil,
+             create: true)
+        .appendingPathComponent(appName, isDirectory: true)
+        .appendingPathComponent(epubFileName.lastPathComponent, isDirectory: true)
+      try Zip.unzipFile(
+        url,
+        destination: tt,
+        overwrite: true,
+        password: nil,
+        progress: nil,
+        fileOutputHandler: nil)
+      destination = tt
     } catch {
       throw EPUBParserError.unzipFailed(reason: error)
     }
